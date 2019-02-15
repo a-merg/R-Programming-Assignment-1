@@ -1,0 +1,11 @@
+ complete <- function(directory, id = 1:332){
+    files_list <- list.files(path = directory,        ## Compile all files in directory into a list
+                             pattern = ".csv", 
+                             full.names = TRUE)
+    nobs <- numeric()                                 ## Store empty numeric variable to eventually add data to
+    for(i in id){                                     ## Loop through relevant files, and store sum of complete cases
+      data <- read.csv(files_list[i])
+      nobs <- c(nobs, sum(complete.cases(data)))
+    }
+    data.frame(id, nobs)                              ## Create data frame to present the chosen id and 
+    }                                                 ##    corresponding number of complete cases
