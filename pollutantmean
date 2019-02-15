@@ -1,0 +1,19 @@
+pollutantmean <- function(directory, pollutant, id = 1:332){
+    files_list <- list.files(path = directory,                  ## Compile all specdata files into one list
+                             pattern = ".csv", 
+                             full.names = TRUE)
+    frame <- data.frame()                                       ## Set up an empty data frame to bind data files into
+    for(i in id){                                               ## Loop through files list and combine ID'd cols into frame
+      data <- read.csv(files_list[i])
+      frame <- rbind(frame, data)
+      }
+    
+    mean(frame[,pollutant], na.rm = TRUE)                       ## Return the mean of the chosen pollutant variable
+      
+    }
+
+
+
+
+
+
