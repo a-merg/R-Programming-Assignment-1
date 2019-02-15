@@ -1,4 +1,4 @@
-# R Programming Pollutant Mean Function
+# R Programming Week 2 Assignment Parts 1-3
 Zip file containing data:
 
     https://d396qusza40orc.cloudfront.net/rprog%2Fdata%2Fspecdata.zip
