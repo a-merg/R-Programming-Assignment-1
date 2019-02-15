@@ -1,0 +1,16 @@
+corr <- function(directory, threshold = 0) {
+        files_list <- list.files(directory,                   ## Create list of all specdata files
+                                 full.names = TRUE)          
+        result <- vector(mode = "numeric", length = 0)        ## Store empty vector variable
+        for (i in 1:332){                                     ## Loop through files list
+            data1 <- read.csv(files_list[i])
+            data1 <- data1[complete.cases(data1),]            ## Subset rows of complete cases
+            NumObs <- nrow(data1)                             ## Define number of observations using nrow function
+            if(NumObs > threshold){                           ## Store the correlation of the two variables in 'result'
+              result <- c(result, cor(data1$sulfate,          ##    only if a certain threshold is reached.
+                                      data1$nitrate))
+            }
+            
+        }
+        return(result)                        
+}
